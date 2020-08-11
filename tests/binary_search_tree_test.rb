@@ -31,28 +31,25 @@ class BinarySearchTreeTest < Minitest::Test
   end
 
   def test_after_root_is_set_it_can_other_nodes_to_left_and_right
-    skip
     @tree.insert(61, "Bill & Ted's Excellent Adventure")
-    root_node = @tree.root
-
     @tree.insert(16, "Johnny English")
 
-    assert_equal "Johnny English", root_node.left.movie_title
-    assert_equal 16, root_node.left.movie_score
+    assert_equal 'Bill & Ted\'s Excellent Adventure', @tree.root.movie_title
+    assert_equal "Johnny English", @tree.root.left.movie_title
+    assert_equal 16, @tree.root.left.movie_score
 
     @tree.insert(92, "Sharknado 3")
 
-    assert_equal "Sharknado 3", root_node.right.movie_title
-    assert_equal 92, root_node.right.movie_score
+    assert_equal "Sharknado 3", @tree.root.right.movie_title
+    assert_equal 92, @tree.root.right.movie_score
 
     @tree.insert(50, "Hannibal Buress: Animal Furnace")
 
-    assert_equal "Hannibal Buress: Animal Furnace", root_node.left.right.movie_title
-    assert_equal 50, root_node.left.right.movie_score
+    assert_equal "Hannibal Buress: Animal Furnace", @tree.root.left.right.movie_title
+    assert_equal 50, @tree.root.left.right.movie_score
   end
 
   def test_it_can_return_the_depth_of_node_after_insertion
-    skip
     assert_equal 0, @tree.insert(61, "Bill & Ted's Excellent Adventure")
     assert_equal 1, @tree.insert(16, "Johnny English")
     assert_equal 1, @tree.insert(92, "Sharknado 3")
