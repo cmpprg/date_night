@@ -14,7 +14,7 @@ class NodeTest < Minitest::Test
   def test_it_has_attributes
     assert_equal 44, @node.movie_score
     assert_equal 'Ryan\'s Revenge', @node.movie_title
-    assert_equal nil, @node.left
-    assert_equal nil, @node.right
+    assert_nil @node.left
+    assert_nil @node.right
   end
 end
