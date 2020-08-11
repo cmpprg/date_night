@@ -17,4 +17,12 @@ class NodeTest < Minitest::Test
     assert_nil @node.left
     assert_nil @node.right
   end
+
+  def test_left_and_right_can_be_modified
+    @node.left = 'left'
+    @node.right = 'right'
+
+    assert_equal 'left', @node.left
+    assert_equal 'right', @node.right
+  end
 end
