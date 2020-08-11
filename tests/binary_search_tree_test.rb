@@ -8,6 +8,6 @@ class BinarySearchTreeTest < Minitest::Test
   end
 
   def test_that_it_exists
-    assert_instance_of BinarySearchTree, tree
+    assert_instance_of BinarySearchTree, @tree
   end
 end
