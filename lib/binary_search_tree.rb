@@ -22,7 +22,7 @@ class BinarySearchTree
 
       current_depth += 1
     end
-    
+
     current_depth
   end
 
@@ -32,4 +32,22 @@ class BinarySearchTree
     @root = node
     0
   end
+
+  def search_or_find_parent_for(score)
+    current_node = @root
+    previous_node = nil
+
+    until current_node.nil? || current_node.movie_score == score
+      previous_node = current_node
+      if score <= current_node.movie_score
+        current_node = current_node.left
+      elsif score >= current_node.movie_score
+        current_node = current_node.right
+      end
+    end
+
+    return previous_node if current_node.nil?
+    current_node
+  end
+
 end
