@@ -8,28 +8,47 @@ class BinarySearchTree
 
     return set_root(new_node) if root.nil?
 
-    current_node = root
-    current_depth = 0
+    parent = find_node_or_parent_for(score)
+    return parent.depth if score == parent.movie_score
 
-    until current_node.movie_score == score
-      if score < current_node.movie_score
-        current_node.left = new_node if current_node.left.nil?
-        current_node = current_node.left
-      elsif score > current_node.movie_score
-        current_node.right = new_node if current_node.right.nil?
-        current_node = current_node.right
-      end
+    new_node.depth = parent.depth + 1
+    score < parent.movie_score ?
+      parent.left = new_node :
+      parent.right = new_node
 
-      current_depth += 1
-    end
-    
-    current_depth
+    new_node.depth
+  end
+
+  def include?(score)
+    node = find_node_or_parent_for(score)
+    score == node.movie_score
+  end
+
+  def depth_of(score)
+    node = find_node_or_parent_for(score)
+    return node.depth if node.movie_score == score
   end
 
   private
 
   def set_root(node)
     @root = node
-    0
+    @root.depth
   end
+
+  def find_node_or_parent_for(score)
+    current_node = @root
+    previous_node = nil
+
+    until current_node.nil? || current_node.movie_score == score
+      previous_node = current_node
+      score <= current_node.movie_score ?
+        current_node = current_node.left :
+        current_node = current_node.right
+    end
+
+    return previous_node if current_node.nil?
+    current_node
+  end
+
 end

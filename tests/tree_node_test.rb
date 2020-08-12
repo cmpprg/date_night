@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/node'
+require './lib/tree_node'
 
 class NodeTest < Minitest::Test
   def setup
@@ -14,6 +14,7 @@ class NodeTest < Minitest::Test
   def test_it_has_attributes
     assert_equal 44, @node.movie_score
     assert_equal 'Ryan\'s Revenge', @node.movie_title
+    assert_equal 0, @node.depth
     assert_nil @node.left
     assert_nil @node.right
   end
