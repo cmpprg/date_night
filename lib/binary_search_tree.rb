@@ -24,6 +24,11 @@ class BinarySearchTree
     score == node.movie_score
   end
 
+  def depth_of(score)
+    node = find_node_or_parent_for(score)
+    return node.depth if node.movie_score == score
+  end
+
   private
 
   def set_root(node)
