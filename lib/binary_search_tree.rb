@@ -37,11 +37,9 @@ class BinarySearchTree
 
     until current_node.nil? || current_node.movie_score == score
       previous_node = current_node
-      if score <= current_node.movie_score
-        current_node = current_node.left
-      elsif score >= current_node.movie_score
+      score <= current_node.movie_score ?
+        current_node = current_node.left :
         current_node = current_node.right
-      end
     end
 
     return previous_node if current_node.nil?
